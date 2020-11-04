@@ -1,0 +1,32 @@
+[container] {
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  background: #ffffff;
+  color: #495057;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+[welcome]{
+    display: flex;
+    justify-content: space-between;
+}
+[entry-tab]{
+    height: 300px;
+
+}
+
+[sign-up-container]{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+[sign-in-container]{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+[content] {
+  width: 450px;
+  min-height: 450px;
+}

@@ -1,0 +1,25 @@
+<div window>
+  <div container>
+    <div content>
+      <p-tabView>
+        <p-tabPanel header="SignUp" [selected]="true">
+          <div sign-up-container entry-tab>
+            <div welcome>
+              <p>Hey there</p>
+              <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25px" height="25px">
+            </div>
+            <app-input-field header="Email address" icon="pi-inbox" placeholder="Email address"></app-input-field>
+            <app-input-field header="Nick Name" icon="pi-star-o" placeholder="Nick Name"></app-input-field>
+            <button pButton type="button" label="Click to SignUp"></button>
+          </div>
+        </p-tabPanel>
+        <p-tabPanel header="SignIn">
+          <div sign-in-container entry-tab>
+            <app-input-field header="Email address" icon="pi-inbox" placeholder="Email address"></app-input-field>
+            <button pButton type="button" label="Click to SignIn"></button>
+          </div>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+</div>

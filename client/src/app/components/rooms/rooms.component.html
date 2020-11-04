@@ -1,0 +1,39 @@
+<div window>
+    <div content>
+        <p-panel header="Chat Rooms">
+            <div chat-room-container>
+
+                <div available-rooms>
+                    <p-table [value]="products" selectionMode="single" [(selection)]="selectedProduct1" dataKey="name"
+                        (onRowSelect)="onRowSelect($event)" [scrollable]="true" scrollHeight="400px">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Available Rooms</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-product>
+                            <tr [pSelectableRow]="product">
+                                <td>{{product.name}}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+
+                </div>
+
+                <div create-room>
+                    <p-panel header="Create New Room">
+                        <div create-room-container>
+                            <app-input-field header="" icon="pi-star-o" placeholder="Room Name"></app-input-field>
+                            <button pButton type="button" label="Click to Create"></button>
+                        </div>
+                    </p-panel>
+
+                </div>
+            </div>
+
+        </p-panel>
+
+
+    </div>
+
+</div>

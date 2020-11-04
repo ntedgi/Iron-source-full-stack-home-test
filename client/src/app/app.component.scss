@@ -1,0 +1,19 @@
+
+[window]{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../assets/app-background.jpg");
+}
+
+[content]{
+    width: 80%;
+    height: 50%;
+}

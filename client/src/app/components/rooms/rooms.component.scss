@@ -1,0 +1,20 @@
+[content]{
+    width: 50%;
+    height: 50%;
+}
+[chat-room-container]{
+    display: flex;
+    justify-content: space-between;
+}
+
+[available-rooms]{
+    max-width: 400px;
+}
+
+[ create-room-container]{
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
