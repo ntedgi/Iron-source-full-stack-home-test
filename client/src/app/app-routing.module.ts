@@ -7,8 +7,7 @@ import { RoomsComponent } from './components/rooms/rooms.component';
 import { LoginComponent } from './components/login/login.component'
 
 const routes: Routes = [
-  { path: "login", component: LoginComponent },
-  { path: "", component: ChatComponent },
+  { path: "", component: LoginComponent },
   { path: "chat", component: ChatComponent },
   { path: "rooms", component: RoomsComponent  }]
 

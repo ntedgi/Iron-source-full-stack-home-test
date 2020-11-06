@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-input-field',
@@ -7,12 +7,9 @@ import { Component, OnInit,Input } from '@angular/core';
 })
 export class InputFieldComponent implements OnInit {
 
-  constructor() { }
-
   @Input() header: string;
   @Input() icon: string;
   @Input() placeholder: string;
-
 
   ngOnInit(): void {
   }

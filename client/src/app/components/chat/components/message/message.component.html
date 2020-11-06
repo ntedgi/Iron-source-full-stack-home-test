@@ -1,3 +1,5 @@
-<span class="time">{{ message.timestamp | date: "hh:mm:ss" }}</span>
-<span class="user-name">{{ message.userName }}</span>
+<div meassage-head>
+    <span class="user-name">{{ message.userName }}</span>
+    <span class="time">{{ message.timestamp | date: "M/d/yy, h:mm a" }}</span>
+</div>
 <span class="message">{{ message.text }}</span>

@@ -1,19 +1,13 @@
 span {
   margin-left: 5px;
   &.user-name {
-    color: #8bb5ce;
+    color: sandybrown;
     font-weight: bold;
     &::after {
       content: ":";
     }
   }
   &.time {
-    &::after {
-      content: ")";
-    }
-
-    &::before {
-      content: "(";
-    }
+    font-size: 12px;
   }
 }

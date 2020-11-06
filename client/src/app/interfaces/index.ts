@@ -13,5 +13,11 @@ export interface Message {
 
 export interface User {
     name: string;
-    id: number;
-  }
+    id?: number;
+    email?: string;
+}
+
+export interface IConfig {
+    placeholder: string;
+    buttonLabel: string;
+}

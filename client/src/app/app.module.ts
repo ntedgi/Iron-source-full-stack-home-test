@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,12 +14,16 @@ import { RoomsComponent } from './components/rooms/rooms.component';
 import { LoginComponent } from './components/login/login.component'
 // components
 import { InputFieldComponent } from './components/core/input-field/input-field.component'
-import { MessageComponent } from './components/chat/components/message/message.component'
 import { ChatWindowComponent } from './components/chat/components/chat-window/chat-window.component'
-// services
+import { MessageComponent } from './components/chat/components/message/message.component'
+import { ChatInputComponent } from './components/chat/components/chat-input/chat-input.component'
+import { UsersListComponent } from './components/chat/components/users-list/users-list.component'
+// providers
 import { ChatRoomsService } from "./services/chatRoomsService";
-
-
+import { LoginService } from './services/loginService'
+import { FormBuilder } from "@angular/forms";
+import { SigninComponent } from './components/login/componenets/signin/signin.component';
+import { SignupComponent } from './components/login/componenets/signup/signup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,16 +32,21 @@ import { ChatRoomsService } from "./services/chatRoomsService";
     LoginComponent,
     InputFieldComponent,
     MessageComponent,
-    ChatWindowComponent
+    ChatWindowComponent,
+    ChatInputComponent,
+    UsersListComponent,
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     HttpClientModule,
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
-    PrimeNgModuleLoaders
+    PrimeNgModuleLoaders,
+    ReactiveFormsModule
   ],
-  providers: [ChatRoomsService],
+  providers: [ChatRoomsService, FormBuilder, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,11 +8,14 @@
     overflow: auto;
     list-style: none;
     padding: 0;
+
     li.message-list-item {
       padding: 10px 0;
-      &:nth-child(odd) {
-        background: #efefef;
-      }
+      border-top: lightgray;
+      border: 1px solid gray;
+      border-left: none;
+      border-right: none;
+      border-top: none;
     }
   }
 }

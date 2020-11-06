@@ -1,0 +1,30 @@
+<p-toast position="top-left" key="tl"></p-toast>
+
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
+    <div sign-up-container entry-tab>
+
+      <div>
+        <div welcome>
+          <p>Hey there</p>
+          <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25px" height="25px">
+        </div>
+        <div input-field-container>
+          <div input-field-header class="p-text-left">Email address</div>
+          <div input-field-text-input>
+            <span class="p-inputgroup-addon"><i class="pi pi-inbox"></i></span> <input formControlName="email"
+              input-field-text-section type="text" pInputText placeholder="Email address">
+          </div>
+        </div>
+
+        <div input-field-container>
+          <div input-field-header class="p-text-left">Nick Name</div>
+          <div input-field-text-input>
+            <span class="p-inputgroup-addon"><i class="pi pi-star-o"></i></span> <input input-field-text-section
+              formControlName="nickName" type="text" pInputText placeholder="Nick Name">
+          </div>
+        </div>
+      </div>
+      <button pButton type="submit" label="Click to SignUp"></button>
+    </div>
+
+  </form>

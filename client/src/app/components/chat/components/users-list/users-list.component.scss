@@ -1,0 +1,47 @@
+ul.list-group {
+  height: 100%;
+
+}
+
+[header] {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+[connected-users] {
+
+  padding: 20px;
+  margin-left: 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  border-top: lightgray;
+  border: 1px solid gray;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+}
+
+ul {
+  list-style-type: none;
+  margin-left: 10px;
+}
+
+ul li {
+  margin-bottom: 12px;
+  margin-left: -10px;
+  display: flex;
+  align-items: center;
+}
+
+ul li::before {
+  color: transparent;
+  font-size: 1px;
+  content: " ";
+  margin-left: -1.3em;
+  margin-right: 15px;
+  padding: 10px;
+  background-color: lightseagreen;
+}

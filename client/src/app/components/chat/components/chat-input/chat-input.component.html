@@ -1,0 +1,16 @@
+<!-- <form [formGroup]="inputForm" (ngSubmit)="onSubmit()" novalidate>
+  <div class="input-group">
+    <input type="text" class="form-control" formControlName="text" placeholder="{{ config.placeholder }}" required
+      #text />
+    <div class="input-group-append">
+      <button type="button" pButton  label="Send"
+      >
+      </button>
+    </div>
+  </div>
+</form> -->
+
+<div chat-input>
+  <input chat-text-input type="text" pInputText placeholder="Keyword">
+  <button chat-text-btn type="button" pButton pRipple label="Search"></button>
+</div>

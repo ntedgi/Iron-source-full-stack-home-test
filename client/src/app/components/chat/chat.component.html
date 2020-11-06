@@ -3,14 +3,11 @@
 
     <p-panel header="Chat Rooms">
       <div chat-container>
-
         <div chat>
-            <div message-container>message-container</div>
-            <div text-input-container>text-input-container</div>
+          <chat-window [messages]=messages [selectedUser]=selectedUser></chat-window>
         </div>
-
         <div users-list>
-            users-list
+          <users-list [usersList]="usersList" (onUserSelect)="handleUserSelect($event)"></users-list>
         </div>
 
       </div>
