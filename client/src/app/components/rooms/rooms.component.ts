@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ChatRoom} from '../../interfaces';
 import {ChatRoomsService} from '../../services/chatRoomsService';
 import {Router} from '@angular/router';
-import {CHAT_ROOMS_URL} from '../../consts';
+import {CHAT_URL} from '../../consts';
 
 @Component({
   selector: 'app-rooms',
@@ -26,7 +26,7 @@ export class RoomsComponent implements OnInit {
   }
 
   onRowSelect(event): void {
-    this.router.navigateByUrl(`/chat?id=${event.data.name}`);
+    this.router.navigateByUrl(`/${CHAT_URL}?id=${event.data.name}`);
   }
 
 

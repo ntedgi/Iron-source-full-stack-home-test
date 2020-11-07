@@ -4,22 +4,29 @@ import {
   EventEmitter,
   Input,
   Output
-} from "@angular/core";
-import { Message, User } from "../../../../interfaces";
+} from '@angular/core';
+import {Message, User} from '../../../../interfaces';
 
 @Component({
-  selector: "chat-window",
-  templateUrl: "./chat-window.component.html",
-  styleUrls: ["./chat-window.component.scss"],
+  // tslint:disable-next-line:component-selector
+  selector: 'chat-window',
+  templateUrl: './chat-window.component.html',
+  styleUrls: ['./chat-window.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChatWindowComponent {
-  constructor() {}
+
+  constructor() {
+  }
+
   @Input() messages: Message[];
   @Input() selectedUser: User;
   @Output() onMessage = new EventEmitter<string>();
 
-  public handleMessage(message: string) {
+
+
+
+  public handleMessage(message: string): void {
     this.onMessage.emit(message);
   }
 }
