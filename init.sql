@@ -1,26 +1,30 @@
 
 GRANT ALL PRIVILEGES ON DATABASE postgres TO postgres;
 
-create table if not exists forms_data
+create table if not exists users
 (
-	id serial not null,
-	name text,
-	fields json[]
+	email text,
+	nick_name text
 );
 
-alter table forms_data owner to postgres;
+alter table users owner to postgres;
 
-create unique index if not exists forms_id_uindex
-	on forms_data (id);
-
-
-create table if not exists forms_submit
+create table if not exists room_history
 (
-	id integer,
-	time text,
-	submit json
+	room_name text,
+	message text,
+	sender_email text,
+	timestamp timestamp default CURRENT_TIMESTAMP
 );
 
-alter table forms_submit owner to postgres;
+alter table room_history owner to postgres;
 
+create table if not exists rooms
+(
+	room_name text,
+	creator text,
+	timestamp timestamp default CURRENT_TIMESTAMP
+);
+
+alter table rooms owner to postgres;
 
