@@ -1,7 +1,3 @@
-[content]{
-    width: 50%;
-    height: 50%;
-}
 [chat-room-container]{
     display: flex;
     justify-content: space-between;
@@ -9,6 +5,7 @@
 
 [available-rooms]{
     max-width: 400px;
+    padding-right: 10px;
 }
 
 [ create-room-container]{

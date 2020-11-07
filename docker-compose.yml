@@ -10,22 +10,24 @@ services:
       POSTGRES_DB: "postgres"
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-  builder-server:
-    build:
-      context: ./server
-      dockerfile: Dockerfile
-    ports:
-      - "3005"
-    environment:
-      - INSTANCE=builder-server
-  nginx:
-    build:
-      context: ./client
-      dockerfile: Dockerfile
-    depends_on:
-      - builder-server
-    ports:
-      - "8080:80"
-    links:
-      - builder-server:builder-server
-    restart: always
+#  chat-server:
+#    build:
+#      context: ./server
+#      dockerfile: Dockerfile
+#    ports:
+#      - "3005"
+#    environment:
+#      - INSTANCE=chat-server
+#    volumes:
+#      - ./:/server
+#  nginx:
+#    build:
+#      context: ./client
+#      dockerfile: Dockerfile
+#    depends_on:
+#      - builder-server
+#    ports:
+#      - "8080:80"
+#    links:
+#      - builder-server:builder-server
+#    restart: always

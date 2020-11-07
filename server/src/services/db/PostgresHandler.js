@@ -9,7 +9,7 @@ const pgconfig = {
   port: process.env.DATA_BASE_PORT,
 };
 
-logger.info(`DB | Connection Settings: ${JSON.stringify(pgconfig)}`);
+logger.info(`DB |  Settings: ${JSON.stringify(pgconfig)}`);
 
 const pool = new pg.Pool(pgconfig);
 
