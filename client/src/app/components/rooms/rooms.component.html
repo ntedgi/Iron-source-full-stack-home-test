@@ -4,7 +4,7 @@
             <div chat-room-container>
 
                 <div available-rooms>
-                    <p-table [value]="rooms" selectionMode="single" [(selection)]="selectedProduct1" dataKey="name"
+                    <p-table [value]="rooms" selectionMode="single" [(selection)]="selectChatRoom" dataKey="name"
                         (onRowSelect)="onRowSelect($event)" [scrollable]="true" scrollHeight="400px">
                         <ng-template pTemplate="header">
                             <tr>

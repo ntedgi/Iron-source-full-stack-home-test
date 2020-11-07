@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-
-
 import {ChatRoom} from '../../interfaces';
 import {ChatRoomsService} from '../../services/chatRoomsService';
+import {Router} from '@angular/router';
+import {CHAT_ROOMS_URL} from '../../consts';
 
 @Component({
   selector: 'app-rooms',
@@ -12,9 +12,9 @@ import {ChatRoomsService} from '../../services/chatRoomsService';
 export class RoomsComponent implements OnInit {
 
   rooms: ChatRoom[];
-  selectedProduct1: ChatRoom;
+  selectChatRoom: ChatRoom;
 
-  constructor(private chatRoomsService: ChatRoomsService) {
+  constructor(private chatRoomsService: ChatRoomsService, private router: Router) {
   }
 
   ngOnInit() {
@@ -26,7 +26,7 @@ export class RoomsComponent implements OnInit {
   }
 
   onRowSelect(event): void {
-    console.log(event.data.name);
+    this.router.navigateByUrl(`/chat?id=${event.data.name}`);
   }
 
 
