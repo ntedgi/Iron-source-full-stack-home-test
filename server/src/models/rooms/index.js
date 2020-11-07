@@ -6,7 +6,7 @@ const createChatRoom = async(roomName, creator) => {
   const userFound = await chatRoomExists(roomName);
   let userCreated = false;
   if (!userFound) {
-    const query = `INSERT INTO ${chatRoomTable}(email, nick_name) VALUES($1, $2)`;
+    const query = `INSERT INTO ${chatRoomTable} (room_name, creator) VALUES($1, $2)`;
     const values = [roomName, creator];
     await dbHandler.executeQuery(query, values);
     userCreated = true;
@@ -24,14 +24,14 @@ const getAllAvailableChatRooms = async() => {
 };
 
 const getChatRoomByName = async roomName => {
-  const selectFieldsQuery = `SELECT * from ${chatRoomTable} where nick_name = ($1)`;
+  const selectFieldsQuery = `SELECT * from ${chatRoomTable} where room_name = ($1)`;
   const form = await dbHandler.executeQuery(selectFieldsQuery, [roomName]);
   return form.rows;
 };
 
 
-const chatRoomExists = async nickName => {
-  const user = await getChatRoomByName(nickName);
+const chatRoomExists = async roomName => {
+  const user = await getChatRoomByName(roomName);
   return !(user === undefined || user.length === 0);
 };
 

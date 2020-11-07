@@ -20,8 +20,8 @@ router.get('/', async(req, res) => {
 });
 
 router.post('/', async(req, res) => {
-  const {name, nickName} = req.body;
-  rooms.createChatRoom(name, nickName)
+  const {roomName, creator} = req.body;
+  rooms.createChatRoom(roomName, creator)
     .then(response => {
       if (response)
         res.send({'status': 200});

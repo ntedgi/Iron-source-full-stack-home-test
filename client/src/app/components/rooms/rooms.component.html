@@ -20,15 +20,19 @@
 
                 </div>
 
-                <div create-room>
-                    <p-panel header="Create New Room">
-                        <div create-room-container>
-                            <app-input-field header="" icon="pi-star-o" placeholder="Room Name"></app-input-field>
-                            <button pButton type="button" label="Click to Create"></button>
-                        </div>
-                    </p-panel>
+              <div create-room>
+                <p-panel header="Create New Room">
+                  <div create-room-container>
+                    <form [formGroup]="newRoom" novalidate>
+                      <app-input-field [formControl]="newRoom.controls.roomName" icon="pi-star-o"
+                                       ngDefaultControl placeholder="Room Name">
+                      </app-input-field>
+                      <button pButton type="button" (click)="createRoom()" label="Click to Create"></button>
+                    </form>
+                  </div>
+                </p-panel>
 
-                </div>
+              </div>
             </div>
 
         </p-panel>
