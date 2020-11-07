@@ -12,7 +12,7 @@
           <div input-field-header class="p-text-left">Email address</div>
           <div input-field-text-input>
             <span class="p-inputgroup-addon"><i class="pi pi-inbox"></i></span> <input formControlName="email"
-              input-field-text-section type="text" pInputText placeholder="Email address">
+              input-field-text-section type="text" pInputText placeholder="Email Address">
           </div>
         </div>
 
@@ -22,9 +22,11 @@
             <span class="p-inputgroup-addon"><i class="pi pi-star-o"></i></span> <input input-field-text-section
               formControlName="nickName" type="text" pInputText placeholder="Nick Name">
           </div>
+          <div note > * nickname should consists at least 4 characters  </div>
+
         </div>
       </div>
-      <button pButton type="submit" label="Click to SignUp"></button>
+      <button pButton type="submit" label="Click to SignUn" [disabled]="!signupForm.valid"></button>
     </div>
 
   </form>

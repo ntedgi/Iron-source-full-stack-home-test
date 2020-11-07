@@ -4,16 +4,16 @@
             <div chat-room-container>
 
                 <div available-rooms>
-                    <p-table [value]="products" selectionMode="single" [(selection)]="selectedProduct1" dataKey="name"
+                    <p-table [value]="rooms" selectionMode="single" [(selection)]="selectedProduct1" dataKey="name"
                         (onRowSelect)="onRowSelect($event)" [scrollable]="true" scrollHeight="400px">
                         <ng-template pTemplate="header">
                             <tr>
                                 <th>Available Rooms</th>
                             </tr>
                         </ng-template>
-                        <ng-template pTemplate="body" let-product>
-                            <tr [pSelectableRow]="product">
-                                <td>{{product.name}}</td>
+                        <ng-template pTemplate="body" let-room>
+                            <tr [pSelectableRow]="room">
+                                <td>{{room.name}}</td>
                             </tr>
                         </ng-template>
                     </p-table>

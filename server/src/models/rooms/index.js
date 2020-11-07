@@ -16,8 +16,11 @@ const createChatRoom = async(roomName, creator) => {
 
 const getAllAvailableChatRooms = async() => {
   const selectFieldsQuery = `SELECT * from ${chatRoomTable}`;
-  const form = await dbHandler.executeQuery(selectFieldsQuery, []);
-  return form.rows;
+  const data = await dbHandler.executeQuery(selectFieldsQuery, []);
+  if (data && data.rows) {
+    return data.rows.map(e => ({name: e['room_name'], usersCount: 0}));
+  }
+  return [];
 };
 
 const getChatRoomByName = async roomName => {

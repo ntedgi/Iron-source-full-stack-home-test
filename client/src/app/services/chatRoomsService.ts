@@ -16,7 +16,7 @@ export class ChatRoomsService {
   constructor(private http: HttpClient) {
   }
 
-  getAllAvailableChatRooms(): Promise<ChatRoom[]> {
+  getAllAvailableChatRooms(): Promise<any> {
     return this.http.get<any>('/api/rooms').toPromise();
   }
 

@@ -1,6 +1,6 @@
 export interface ChatRoom {
     name?: string;
-    users?: number;
+    usersCount?: number;
 }
 
 export interface Message {

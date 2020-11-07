@@ -16,8 +16,13 @@ export class RoomsComponent implements OnInit {
 
   constructor(private chatRoomsService: ChatRoomsService) {
   }
+
   ngOnInit() {
-    this.products = this.chatRoomsService.getAllAvailableChatRooms();
+    this.chatRoomsService.getAllAvailableChatRooms().then(availableRooms => {
+        const {data} = availableRooms;
+        this.rooms = data.rooms.map(e => e as ChatRoom);
+      }
+    );
   }
 
   onRowSelect(event): void {

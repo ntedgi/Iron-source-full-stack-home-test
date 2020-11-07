@@ -4,7 +4,7 @@ import {
   ViewChild,
   ElementRef
 } from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LoginService} from '../../../../services/loginService';
 import {User} from '../../../../interfaces';
@@ -18,7 +18,6 @@ import {CHAT_ROOMS_URL} from '../../../../consts';
 })
 export class SignupComponent implements OnInit {
 
-
   @ViewChild('email', {static: true}) emailField: ElementRef;
   @ViewChild('nickName', {static: true}) nickNameField: ElementRef;
 
@@ -31,11 +30,9 @@ export class SignupComponent implements OnInit {
   }
 
   private initForm(): void {
-    const email = '';
-    const nickName = '';
     this.signupForm = this.fb.group({
-      email: [email, Validators.required],
-      nickName: [nickName, [Validators.required]]
+      email: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')]),
+      nickName: new FormControl('', [Validators.required , Validators.minLength(4)])
     });
   }
 

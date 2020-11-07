@@ -4,7 +4,7 @@ import {
   ViewChild,
   ElementRef
 } from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LoginService} from '../../../../services/loginService';
 import {User} from '../../../../interfaces';
@@ -42,9 +42,8 @@ export class SigninComponent implements OnInit {
   }
 
   private initForm(): void {
-    const email = '';
     this.signupForm = this.fb.group({
-      email: [email, Validators.required],
+      email: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')])
     });
   }
 

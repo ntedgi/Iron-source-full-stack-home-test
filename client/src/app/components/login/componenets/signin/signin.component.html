@@ -5,9 +5,12 @@
       <div input-field-header class="p-text-left">Email address</div>
       <div input-field-text-input>
         <span class="p-inputgroup-addon"><i class="pi pi-inbox"></i></span> <input formControlName="email"
-          formControlName="email" input-field-text-section type="text" pInputText placeholder="Email address">
+                                                                                   formControlName="email"
+                                                                                   input-field-text-section type="text"
+                                                                                   pInputText
+                                                                                   placeholder="Email address">
       </div>
     </div>
-    <button pButton type="submit" label="Click to SignIn"></button>
+    <button pButton type="submit" label="Click to SignIn" [disabled]="!signupForm.valid"></button>
   </div>
 </form>

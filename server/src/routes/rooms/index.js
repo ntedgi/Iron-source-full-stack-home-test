@@ -11,10 +11,7 @@ router.get('/', async(req, res) => {
   rooms
     .getAllAvailableChatRooms()
     .then(response => {
-      if (response && response.length > 0) {
-        const {nick_name} = response[0];
-        res.send({'status': 200, data: {nickName: nick_name}});
-      }
+      res.send({'status': 200, data: {rooms: response}});
     })
     .catch(e => {
       logger.error(e.message);
