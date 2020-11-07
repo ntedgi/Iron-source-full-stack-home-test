@@ -1,43 +1,50 @@
 <div window>
-    <div content>
-        <p-panel header="Chat Rooms">
-            <div chat-room-container>
+  <div content>
+    <p-panel header="Chat Rooms">
+      <div chat-room-container>
+        <div available-rooms>
+          <p-table [value]="rooms" selectionMode="single" [(selection)]="selectChatRoom" dataKey="name"
+                   (onRowSelect)="onRowSelect($event)" [scrollable]="true" scrollHeight="400px">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Available Rooms</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-room>
+              <tr [pSelectableRow]="room">
+                <td>{{room.name}}</td>
+              </tr>
+            </ng-template>
+          </p-table>
 
-                <div available-rooms>
-                    <p-table [value]="rooms" selectionMode="single" [(selection)]="selectChatRoom" dataKey="name"
-                        (onRowSelect)="onRowSelect($event)" [scrollable]="true" scrollHeight="400px">
-                        <ng-template pTemplate="header">
-                            <tr>
-                                <th>Available Rooms</th>
-                            </tr>
-                        </ng-template>
-                        <ng-template pTemplate="body" let-room>
-                            <tr [pSelectableRow]="room">
-                                <td>{{room.name}}</td>
-                            </tr>
-                        </ng-template>
-                    </p-table>
-
-                </div>
-
-              <div create-room>
-                <p-panel header="Create New Room">
-                  <div create-room-container>
-                    <form [formGroup]="newRoom" novalidate>
-                      <app-input-field [formControl]="newRoom.controls.roomName" icon="pi-star-o"
-                                       ngDefaultControl placeholder="Room Name">
-                      </app-input-field>
-                      <button pButton type="button" (click)="createRoom()" label="Click to Create"></button>
-                    </form>
+        </div>
+        <div create-room>
+          <p-panel header="Create New Room">
+            <form [formGroup]="newRoom" novalidate>
+              <div create-room-form>
+                <div create-room-form-content>
+                  <div input-field-container>
+                    <div input-field-text-input>
+                      <span class="p-inputgroup-addon"><i class="pi pi-star-o"></i></span> <input ngDefaultControl
+                                                                                                  [formControl]="newRoom.controls.roomName"
+                                                                                                  input-field-text-section
+                                                                                                  type="text" pInputText
+                                                                                                  placeholder="Room Name">
+                    </div>
                   </div>
-                </p-panel>
-
+                  <div note> * room name should consists at least 4 characters</div>
+                </div>
+                <button pButton type="button" (click)="createRoom()" label="Click to Create"></button>
               </div>
-            </div>
+            </form>
+          </p-panel>
 
-        </p-panel>
+        </div>
+      </div>
+
+    </p-panel>
 
 
-    </div>
+  </div>
 
 </div>

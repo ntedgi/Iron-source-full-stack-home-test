@@ -19,7 +19,7 @@ export class RoomsComponent implements OnInit {
 
   constructor(private chatRoomsService: ChatRoomsService, private fb: FormBuilder, private router: Router) {
     this.newRoom = this.fb.group({
-      roomName: new FormControl('', [Validators.required])
+      roomName: new FormControl('', [Validators.required, Validators.minLength(4)])
     });
   }
 

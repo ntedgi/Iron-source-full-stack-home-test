@@ -1,17 +1,27 @@
-[chat-room-container]{
-    display: flex;
-    justify-content: space-between;
+
+[chat-room-container] {
+  display: flex;
 }
 
-[available-rooms]{
-    max-width: 400px;
-    padding-right: 10px;
+[create-room] {
+  display: flex;
 }
 
-[ create-room-container]{
-    height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+[available-rooms] {
+  max-width: 400px;
+  padding-right: 10px;
+}
+
+[create-room-form] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+[create-room-form-content]{
+
+}
+[note]{
+  padding: 10px;
+  font-size: 10px;
+  color:slategrey;
 }

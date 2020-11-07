@@ -12,6 +12,7 @@ const lsocket = message => logger.info(`Socket | ${message}`);
 const ChatRoomHandler = io => {
   io.on(CONNECTION, socket => {
     socket.on(JOIN_ROOM, data => {
+      socket.join(data.roomName);
       lsocket(`user join to : ${data.roomName} room`);
     });
     lsocket(`new user connected : ${socket.id}`);
@@ -19,7 +20,7 @@ const ChatRoomHandler = io => {
       lsocket(`user disconnect : ${socket.id}`);
     });
     socket.on(MESSAGE, data => {
-      lsocket(`user ${data.user.name} sends ${data.message} `);
+      lsocket(`user  ${data.user} sends ${data.message} in room: ${data.room} [ ${socket.id} ]`);
       socket.to(data.room).emit(MESSAGE, data.message);
     });
 

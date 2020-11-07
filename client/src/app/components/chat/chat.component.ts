@@ -19,11 +19,17 @@ export class ChatComponent implements OnInit {
   messages: Message[] = [];
   selectedUser: User;
   usersList: User[] = [];
+  roomName: string;
+  userNickName: string;
 
   constructor(private socket: Socket, private cdr: ChangeDetectorRef, private route: ActivatedRoute
   ) {
-    const roomName: string = this.route.snapshot.queryParamMap.get('id');
-    this.initSocketListener(roomName);
+    this.roomName = this.route.snapshot.queryParamMap.get('id');
+    this.initSocketListener(this.roomName);
+    this.userNickName = localStorage.getItem('nick_name');
+    this.selectedUser = ({name: this.userNickName, id: 6} as User);
+
+
   }
 
   ngOnInit(): void {
@@ -39,27 +45,24 @@ export class ChatComponent implements OnInit {
       'Gaming Set',
       'Gold Phone Case'];
 
-    const userNickName = localStorage.getItem('nickName');
-    this.selectedUser = <User> {name: userNickName, id: 6};
     this.usersList = messages.map((e: string, i: number) => {
-      return <User> {name: `${e}`, id: i};
+      return {name: `${e}`, id: i} as User;
     });
 
 
     this.messages = messages.map((e: string, i: number) => {
-      return <Message> {
+      return {
         text: `${e} ${e}`,
         id: 6,
         userId: 6,
         timestamp: new Date(),
         userName: e
-      };
+      } as Message;
     });
   }
 
   private sendMessage(): void {
-    const roomName: string = this.route.snapshot.queryParamMap.get('id');
-    this.socket.emit('message', {room: roomName, message: 'hi!', user: this.selectedUser});
+    this.socket.emit('message', {room: this.roomName, message: 'hi!', user: this.userNickName});
     console.log('send hi');
   }
 
@@ -75,7 +78,7 @@ export class ChatComponent implements OnInit {
     setInterval(this.sendMessage.bind(this), 3000);
   }
 
-  public handleUserSelect(user: User) {
+  public handleUserSelect(user: User): void {
     this.selectedUser = user;
   }
 

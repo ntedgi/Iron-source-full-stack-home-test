@@ -17,7 +17,6 @@ import { ChatComponent } from './components/chat/chat.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { LoginComponent } from './components/login/login.component';
 // components
-import { InputFieldComponent } from './components/core/input-field/input-field.component';
 import { ChatWindowComponent } from './components/chat/components/chat-window/chat-window.component';
 import { MessageComponent } from './components/chat/components/message/message.component';
 import { ChatInputComponent } from './components/chat/components/chat-input/chat-input.component';
@@ -34,7 +33,6 @@ import { SignupComponent } from './components/login/componenets/signup/signup.co
     ChatComponent,
     RoomsComponent,
     LoginComponent,
-    InputFieldComponent,
     MessageComponent,
     ChatWindowComponent,
     ChatInputComponent,
