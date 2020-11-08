@@ -32,7 +32,7 @@
 ## Offensive Words Filter
 Summary:
 - for this task i use [NeutrinoApi](https://www.neutrinoapi.com/api/bad-word-filter/)
-- i use the Free Tier of "Bad" Word Filter API 
+- I use the Free Tier (limited to 50 request per day) of "Bad" Word Filter API  
 
 
 ## Client side

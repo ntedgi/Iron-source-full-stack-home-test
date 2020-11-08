@@ -6,7 +6,7 @@ const filterServiceConfig = {
 };
 
 const filterEndPoint = 'https://neutrinoapi.net/bad-word-filter';
-const minimumWordLengthToTestWithApi = 5;
+const minimumWordLengthToTestWithApi = 3;
 
 const formatText = async text => {
   if (text.length > minimumWordLengthToTestWithApi) {
