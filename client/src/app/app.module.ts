@@ -9,7 +9,7 @@ import { PrimeNgModuleLoaders } from './primeng-imports';
 import { HttpClientModule } from '@angular/common/http';
 
 
-const config: SocketIoConfig = { url: 'http://localhost:3005/', options: {} };
+const config: SocketIoConfig = { url: '/', options: {} };
 
 
 // pages

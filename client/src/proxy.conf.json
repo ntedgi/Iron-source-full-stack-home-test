@@ -2,5 +2,10 @@
   "/api": {
     "target": "http://localhost:3005",
     "secure": false
+  },
+  "/sock/*": {
+    "target": "http://localhost:3005/socket.io/",
+    "ws": true,
+    "logLevel": "debug"
   }
 }

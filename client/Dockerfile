@@ -8,5 +8,5 @@ RUN  npm run build
 FROM nginx
 RUN rm -rf /usr/share/nginx/html/*
 COPY ./nginx.conf /etc/nginx/nginx.conf
-COPY --from=chat-client /app/build /usr/share/nginx/html
+COPY --from=chat-client /app/dist/client /usr/share/nginx/html
 EXPOSE 80
