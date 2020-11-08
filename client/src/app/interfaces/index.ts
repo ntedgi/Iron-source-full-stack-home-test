@@ -1,22 +1,15 @@
 export interface ChatRoom {
-    name?: string;
-    usersCount?: number;
+  name?: string;
+  usersCount?: number;
 }
 
 export interface Message {
-    text: string;
-    id: number;
-    userId: number;
-    timestamp: Date;
-    userName?: string;
+  message: string;
+  sender: number;
+  timestamp: Date;
 }
 
 export interface User {
-    name: string;
-    email?: string;
-}
-
-export interface IConfig {
-    placeholder: string;
-    buttonLabel: string;
+  name: string;
+  email?: string;
 }

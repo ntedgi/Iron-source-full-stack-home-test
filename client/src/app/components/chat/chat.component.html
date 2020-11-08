@@ -1,13 +1,17 @@
 <div window>
   <div container>
-
-    <p-panel header="Chat Rooms">
+    <p-panel [header]="roomName">
       <div chat-container>
         <div chat>
-          <chat-window [messages]=messages [selectedUser]=selectedUser></chat-window>
+          <chat-window (onMessage)="handleMessage($event)" [messages]=messages
+          ></chat-window>
         </div>
-        <div users-list>
-          <users-list [usersList]="usersList" (onUserSelect)="handleUserSelect($event)"></users-list>
+        <div users-view>
+          <users-list users-list [usersList]="usersList"></users-list>
+          <div leave-chat>
+            <button pButton type="button" pButton label="Leave Chat Room" class="p-button-danger" icon="pi pi-times"
+                    styleClass="p-button-sm"></button>
+          </div>
         </div>
 
       </div>

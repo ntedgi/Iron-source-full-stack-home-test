@@ -1,7 +1,7 @@
 import {
   Component, OnInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
+  ChangeDetectorRef, Output, EventEmitter
 } from '@angular/core';
 import {Message, User} from '../../interfaces/';
 import {Socket} from 'ngx-socket-io';
@@ -22,25 +22,27 @@ import {
 
 })
 export class ChatComponent implements OnInit {
-
   messages: Message[] = [];
-  selectedUser: User;
   usersList: User[] = [];
   roomName: string;
   userNickName: string;
+
+  @Output() onMessage = new EventEmitter<string>();
+
+  public handleMessage(message: string): void {
+    this.socket.emit(MESSAGE, {room: this.roomName, message, user: this.userNickName});
+  }
 
   constructor(private socket: Socket, private cdr: ChangeDetectorRef, private route: ActivatedRoute
   ) {
     this.roomName = this.route.snapshot.queryParamMap.get('id');
     this.initSocketListener(this.roomName);
     this.userNickName = localStorage.getItem('nick_name');
-    this.selectedUser = ({name: this.userNickName, id: 6} as User);
 
 
   }
 
   ngOnInit(): void {
-
 
   }
 
@@ -55,8 +57,8 @@ export class ChatComponent implements OnInit {
       this.socket.emit(JOIN_ROOM, {roomName, nickName: this.userNickName});
     });
     this.socket.on(MESSAGE, data => {
-      const {room, message, user} = data;
-      console.log(`room ${room} | message from :${user} => ${message}`);
+      this.messages.push({...data} as Message);
+      this.cdr.markForCheck();
     });
     this.socket.on(GET_USERS_LIST, data => {
       console.log('GET_USERS_LIST');
@@ -65,30 +67,13 @@ export class ChatComponent implements OnInit {
         return {name: e} as User;
       });
       this.cdr.markForCheck();
-
     });
     this.socket.on(GET_MESSAGES_HISTORY, data => {
-      console.log('GET_MESSAGES_HISTORY');
-      console.log(data);
-      this.messages = data.map((e: any) => {
-        const {
-          message,
-          sender,
-          timestamp
-        } = e;
-        return {
-          text: message,
-          timestamp,
-          userName: sender
-        } as Message;
-      });
+      this.messages = data.map((e: any) => ({...e} as Message));
       this.cdr.markForCheck();
     });
   }
 
-  public handleUserSelect(user: User): void {
-    this.selectedUser = user;
-  }
 
 }
 

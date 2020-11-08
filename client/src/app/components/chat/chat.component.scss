@@ -1,14 +1,30 @@
-[chat-container]{
-    width: 1000px;
-    min-height: 400px;
-    display: flex;
+[chat-container] {
+  width: 1000px;
+  min-height: 400px;
+  display: flex;
 }
-[users-list]{
-    flex:1;
+
+[users-view] {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-[chat]{
-    flex:4;
-    display:flex;
-    flex-direction: column;
-    justify-content: space-between;
+
+[users-list] {
+  flex: 1;
+
+}
+
+[leave-chat] {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+[chat] {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

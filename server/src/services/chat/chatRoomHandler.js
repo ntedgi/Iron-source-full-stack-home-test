@@ -1,5 +1,7 @@
 const logger = require('../logger/WinstonLogger');
 const {getChatMessagesByRoomName, saveMessage} = require('../../models/massages');
+const {formatText} = require('../offensiveWordsFilter');
+
 const {
   CONNECTION,
   DISCONNECT,
@@ -21,7 +23,7 @@ const getChatRoomOnlineUsers = (clients, roomName, nickName) => {
 };
 
 
-const ChatRoomHandler = io => {
+const chatRoomHandler = io => {
   io.on(CONNECTION, socket => {
     lsocket(`new user connected : ${socket.id}`);
     socket.on(JOIN_ROOM, data => {
@@ -41,11 +43,13 @@ const ChatRoomHandler = io => {
       socket.leave(roomName);
       lsocket(`user disconnect : ${socket.id} | leave room ${roomName}`);
     });
-    socket.on(MESSAGE, data => {
+    socket.on(MESSAGE, async data => {
       const {room, message, user} = data;
-      saveMessage(room, message, user).then(response => {
-        lsocket(`user  ${user} sends ${message} in room: ${room} [ ${socket.id} ]`);
-        socket.to(room).emit(MESSAGE, data);
+      const massageWithoutBadWords = await formatText(message);
+      saveMessage(room, massageWithoutBadWords, user).then(response => {
+        lsocket(`user  ${user} sends ${massageWithoutBadWords} in room: ${room} [ ${socket.id} ]`);
+        socket.to(room).emit(MESSAGE, response);
+        socket.emit(MESSAGE, response);
       });
 
     });
@@ -57,5 +61,5 @@ const lsocket = message => logger.info(`Socket | ${message}`);
 
 
 module.exports = {
-  ChatRoomHandler,
+  chatRoomHandler,
 };

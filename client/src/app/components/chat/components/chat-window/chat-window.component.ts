@@ -23,9 +23,6 @@ export class ChatWindowComponent {
   @Input() selectedUser: User;
   @Output() onMessage = new EventEmitter<string>();
 
-
-
-
   public handleMessage(message: string): void {
     this.onMessage.emit(message);
   }

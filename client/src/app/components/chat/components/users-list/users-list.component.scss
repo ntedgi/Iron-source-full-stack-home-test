@@ -9,19 +9,11 @@ ul.list-group {
 }
 
 [connected-users] {
-
-  padding: 20px;
   margin-left: 10px;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 0;
-  border-top: lightgray;
-  border: 1px solid gray;
-  border-right: none;
-  border-top: none;
-  border-bottom: none;
 }
 
 ul {
@@ -31,7 +23,6 @@ ul {
 
 ul li {
   margin-bottom: 12px;
-  margin-left: -10px;
   display: flex;
   align-items: center;
 }
