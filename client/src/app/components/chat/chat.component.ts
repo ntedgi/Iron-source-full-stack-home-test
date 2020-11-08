@@ -6,6 +6,13 @@ import {
 import {Message, User} from '../../interfaces/';
 import {Socket} from 'ngx-socket-io';
 import {ActivatedRoute} from '@angular/router';
+import {
+  CONNECT,
+  JOIN_ROOM,
+  MESSAGE,
+  GET_USERS_LIST,
+  GET_MESSAGES_HISTORY,
+} from './consts.js';
 
 @Component({
   selector: 'app-chat',
@@ -33,49 +40,50 @@ export class ChatComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const messages = ['Bamboo Watch',
-      'Black Watch',
-      'Blue Band',
-      'Blue T-Shirt',
-      'Bracelet',
-      'Brown Purse',
-      'Chakra Bracelet',
-      'Galaxy Earrings',
-      'Game Controller',
-      'Gaming Set',
-      'Gold Phone Case'];
-
-    this.usersList = messages.map((e: string, i: number) => {
-      return {name: `${e}`, id: i} as User;
-    });
 
 
-    this.messages = messages.map((e: string, i: number) => {
-      return {
-        text: `${e} ${e}`,
-        id: 6,
-        userId: 6,
-        timestamp: new Date(),
-        userName: e
-      } as Message;
-    });
   }
 
   private sendMessage(): void {
-    this.socket.emit('message', {room: this.roomName, message: 'hi!', user: this.userNickName});
+    this.socket.emit(MESSAGE, {room: this.roomName, message: 'hi!', user: this.userNickName});
     console.log('send hi');
   }
 
-  // tslint:disable-next-line:typedef
-  private initSocketListener(roomName) {
-    this.socket.on('connect', () => {
+  private initSocketListener(roomName): void {
+    this.socket.on(CONNECT, () => {
       console.log(`connected to socket`);
-      this.socket.emit('join room', {roomName});
+      this.socket.emit(JOIN_ROOM, {roomName, nickName: this.userNickName});
     });
-    this.socket.on('message', data => {
-      console.log('hi from server');
+    this.socket.on(MESSAGE, data => {
+      const {room, message, user} = data;
+      console.log(`room ${room} | message from :${user} => ${message}`);
     });
-    setInterval(this.sendMessage.bind(this), 3000);
+    this.socket.on(GET_USERS_LIST, data => {
+      console.log('GET_USERS_LIST');
+      console.log(data);
+      this.usersList = data.map((e: string) => {
+        return {name: e} as User;
+      });
+      this.cdr.markForCheck();
+
+    });
+    this.socket.on(GET_MESSAGES_HISTORY, data => {
+      console.log('GET_MESSAGES_HISTORY');
+      console.log(data);
+      this.messages = data.map((e: any) => {
+        const {
+          message,
+          sender,
+          timestamp
+        } = e;
+        return {
+          text: message,
+          timestamp,
+          userName: sender
+        } as Message;
+      });
+      this.cdr.markForCheck();
+    });
   }
 
   public handleUserSelect(user: User): void {
