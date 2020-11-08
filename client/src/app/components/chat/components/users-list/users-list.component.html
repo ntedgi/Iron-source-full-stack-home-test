@@ -1,8 +1,7 @@
 <div connected-users>
   <span header>ONLINE-{{usersList.length}}</span>
   <ul class="list-group" *ngIf="usersList.length">
-    <li *ngFor="let user of usersList" class="list-group-item" [class.active]="user.isCurrent"
-      (dblclick)="selectUser(user)" title="Click twice to select">
+    <li *ngFor="let user of usersList" class="list-group-item">
       {{ user.name }}
     </li>
   </ul>

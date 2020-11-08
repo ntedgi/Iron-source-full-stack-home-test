@@ -4,22 +4,24 @@ const {formatText} = require('../offensiveWordsFilter');
 
 const {
   CONNECTION,
-  DISCONNECT,
+  LEAVE_ROOM,
   JOIN_ROOM,
   MESSAGE,
   GET_USERS_LIST,
   GET_MESSAGES_HISTORY,
+  DISCONNECT,
 
 } = require('./consts');
 
 const connectedUsers = {};
 
-const getChatRoomOnlineUsers = (clients, roomName, nickName) => {
-  const socketIds = Object.keys(clients.sockets).filter(e => Object.keys(clients.sockets[e].rooms).includes(roomName));
-  const userList = socketIds.map(e => connectedUsers[e]);
-  userList.push(nickName);
-  return userList;
-
+const getChatRoomOnlineUsers = (io, roomName) => {
+  try {
+    const users = Object.keys(io.sockets.adapter.rooms[roomName].sockets).map(e => connectedUsers[e]);
+    return users;
+  } catch (e) {
+    return [];
+  }
 };
 
 
@@ -30,7 +32,7 @@ const chatRoomHandler = io => {
       const {roomName, nickName} = data;
       connectedUsers[socket.id] = nickName;
       socket.join(roomName);
-      const userList = getChatRoomOnlineUsers(io.sockets, roomName, nickName);
+      const userList = getChatRoomOnlineUsers(io, roomName);
       socket.emit(GET_USERS_LIST, userList);
       socket.to(roomName).emit(GET_USERS_LIST, userList);
       getChatMessagesByRoomName(roomName).then(data => {
@@ -38,10 +40,15 @@ const chatRoomHandler = io => {
       });
       lsocket(`user join to : ${roomName} room`);
     });
-    socket.on(DISCONNECT, data => {
+    socket.on(LEAVE_ROOM, data => {
       const {roomName} = data;
       socket.leave(roomName);
+      const userList = getChatRoomOnlineUsers(io, roomName);
+      socket.to(roomName).emit(GET_USERS_LIST, userList);
       lsocket(`user disconnect : ${socket.id} | leave room ${roomName}`);
+    });
+    socket.on(DISCONNECT, () => {
+      lsocket(`socket id  ${socket.id} disconnect.`);
     });
     socket.on(MESSAGE, async data => {
       const {room, message, user} = data;

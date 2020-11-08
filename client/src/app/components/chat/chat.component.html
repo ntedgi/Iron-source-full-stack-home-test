@@ -9,8 +9,8 @@
         <div users-view>
           <users-list users-list [usersList]="usersList"></users-list>
           <div leave-chat>
-            <button pButton type="button" pButton label="Leave Chat Room" class="p-button-danger" icon="pi pi-times"
-                    styleClass="p-button-sm"></button>
+            <button pButton type="button" label="Leave Chat Room" class="p-button-danger" icon="pi pi-times"
+                    styleClass="p-button-sm" (click)="handleLeaveChatRoom()"></button>
           </div>
         </div>
 
