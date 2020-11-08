@@ -1,8 +1,5 @@
 # Iron source full stack home test  - Naor Tedgi
 
-[![Build Status](https://travis-ci.org/ntedgi/form-builder-exam.svg?branch=master)](https://travis-ci.org/ntedgi/form-builder-exam)
-[![Coverage Status](https://coveralls.io/repos/github/ntedgi/form-builder-exam/badge.svg?branch=master)](https://coveralls.io/github/ntedgi/form-builder-exam?branch=master)
-
 - [How I Run This Project Locally?](#how-i-run-this-project-locally-)
 - [Offensive Words Filter]()
 - [Client side](#client-side)
@@ -82,6 +79,4 @@ Available Scripts:
 
 
 ## Continuous integration
-
 - Travis Ci for building and testing
-- Coveralls for tracking code coverag
