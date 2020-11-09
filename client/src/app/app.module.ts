@@ -27,6 +27,7 @@ import {LoginService} from './services/login-service';
 import {FormBuilder} from '@angular/forms';
 import {SigninComponent} from './components/login/componenets/signin/signin.component';
 import {SignupComponent} from './components/login/componenets/signup/signup.component';
+import { NotFoundComponent } from './components/not-found/not-found.component'
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {SignupComponent} from './components/login/componenets/signup/signup.comp
     ChatInputComponent,
     UsersListComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    NotFoundComponent
   ],
   imports: [
     HttpClientModule,
