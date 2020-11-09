@@ -4,11 +4,13 @@ import {ChatRoomsService} from '../../services/chatRoomsService';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {CHAT_URL} from '../../consts';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
-  styleUrls: ['./rooms.component.scss']
+  styleUrls: ['./rooms.component.scss'],
+  providers: [ChatRoomsService, HttpClient, FormBuilder]
 })
 export class RoomsComponent implements OnInit {
 

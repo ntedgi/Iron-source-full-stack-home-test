@@ -10,11 +10,13 @@ import {LoginService} from '../../../../services/loginService';
 import {User} from '../../../../interfaces';
 import {PrimeNGConfig, MessageService} from 'primeng/api';
 import {CHAT_ROOMS_URL} from '../../../../consts';
+import {HttpClient} from '@angular/common/http';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
-  providers: [MessageService]
+  providers: [MessageService, FormBuilder, LoginService, HttpClient]
 })
 export class SignupComponent implements OnInit {
 
@@ -32,11 +34,11 @@ export class SignupComponent implements OnInit {
   private initForm(): void {
     this.signupForm = this.fb.group({
       email: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')]),
-      nickName: new FormControl('', [Validators.required , Validators.minLength(4)])
+      nickName: new FormControl('', [Validators.required, Validators.minLength(4)])
     });
   }
 
-   navigateToChatRooms(): void {
+  navigateToChatRooms(): void {
     this.router.navigateByUrl(CHAT_ROOMS_URL);
   }
 

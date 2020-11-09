@@ -1,5 +1,5 @@
 const pg = require('pg');
-const logger = require('../logger/WinstonLogger');
+const logger = require('../logger');
 
 const pgconfig = {
   user: process.env.DATA_BASE_USER,

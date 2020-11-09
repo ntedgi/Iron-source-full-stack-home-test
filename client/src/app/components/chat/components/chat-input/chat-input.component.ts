@@ -5,7 +5,8 @@ import {
   EventEmitter,
   Input,
   ViewChild,
-  ElementRef
+  ElementRef,
+  CUSTOM_ELEMENTS_SCHEMA
 } from '@angular/core';
 
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
@@ -15,7 +16,8 @@ import {User} from '../../../../interfaces';
   selector: 'chat-input',
   templateUrl: './chat-input.component.html',
   styleUrls: ['./chat-input.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [FormBuilder]
 })
 export class ChatInputComponent {
   @ViewChild('text', {static: true}) nameField: ElementRef;

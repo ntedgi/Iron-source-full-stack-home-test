@@ -1,5 +1,7 @@
-<div meassage-head>
+<div  *ngIf="message">
+  <div meassage-head>
     <span class="user-name">{{ message.sender }}</span>
     <span class="time">{{ message.timestamp | date: "M/d/yy, h:mm a" }}</span>
+  </div>
+  <span class="message">{{ message.message }}</span>
 </div>
-<span class="message">{{ message.message }}</span>

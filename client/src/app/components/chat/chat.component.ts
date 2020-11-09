@@ -16,13 +16,13 @@ import {
 } from './consts.js';
 
 import {CHAT_ROOMS_URL} from '../../consts';
+import {WrappedSocket} from 'ngx-socket-io/src/socket-io.service';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
-
 })
 export class ChatComponent {
   messages: Message[] = [];

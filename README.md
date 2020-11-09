@@ -28,8 +28,15 @@
 
 ## Offensive Words Filter
 Summary:
-- for this task i use [NeutrinoApi](https://www.neutrinoapi.com/api/bad-word-filter/)
-- I use the Free Tier (limited to 50 request per day) of "Bad" Word Filter API  
+for this task i use [NeutrinoApi](https://www.neutrinoapi.com/api/bad-word-filter/)
+I use the Free Tier (limited to 50 request per day) of "Bad" Word Filter API uses variety of NLP techniques 
+because the limit exceed really fast as a fall back I use [web-mech-bad-words](https://github.com/web-mech/badwords) that really on regex close list 
+to change between them change `.env.development` from
+OFFENSIVE_WORDS_FILTER='webmech' to
+OFFENSIVE_WORDS_FILTER='neutrino' 
+ 
+
+
 
 
 ## Client side

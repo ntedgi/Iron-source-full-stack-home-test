@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 
-const buildPath = path.resolve(__dirname, '../../../build');
+const buildPath = path.resolve(__dirname, '../../../dist');
 
 router.use(express.static(buildPath));
 

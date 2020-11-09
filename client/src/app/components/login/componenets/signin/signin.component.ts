@@ -15,7 +15,7 @@ import {CHAT_ROOMS_URL} from '../../../../consts';
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss'],
-  providers: [MessageService]
+  providers: [MessageService, FormBuilder, LoginService]
 })
 export class SigninComponent implements OnInit {
 

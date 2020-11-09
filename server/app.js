@@ -2,18 +2,17 @@ require('dotenv').config({path: './.env.development'});
 const bodyParser = require('body-parser');
 const express = require('express');
 const http = require('http');
-const logger = require('./src/services/logger/WinstonLogger');
+const logger = require('./src/services/logger');
 const usersRouter = require('./src/routes/users');
 const roomsRouter = require('./src/routes/rooms');
-const {chatRoomHandler} = require('./src/services/chat/chatRoomHandler');
 const app = express();
 const server = http.Server(app);
-const socket = require('socket.io');
-const socketHandler = socket(server);
-chatRoomHandler(socketHandler);
+const socketSetup = require('./src/sockets');
 
 const port = process.env.APP_PORT;
 const serverName = process.env.APP_NAME;
+
+socketSetup.createSocket(server);
 
 app.use(bodyParser.json());
 

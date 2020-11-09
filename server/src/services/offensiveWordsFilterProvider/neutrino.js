@@ -1,14 +1,13 @@
 const fetch = require('node-fetch');
-const logger = require('../logger/WinstonLogger');
+const logger = require('../logger');
 const filterServiceConfig = {
   'user-id': process.env.NEUTRINO_API_USER_ID,
   'api-key': process.env.NEUTRINO_API_API_KEY,
 };
-
 const filterEndPoint = 'https://neutrinoapi.net/bad-word-filter';
 const minimumWordLengthToTestWithApi = 3;
 
-const formatText = async text => {
+const clean = async text => {
   if (text.length > minimumWordLengthToTestWithApi) {
     try {
       const body = {content: text, ...filterServiceConfig};
@@ -21,7 +20,6 @@ const formatText = async text => {
         return text;
       });
       let cleanText = text;
-      console.log(response);
       response['bad-words-list'].forEach(badWord => {
         const regex = new RegExp(badWord, 'gi');
         cleanText = cleanText.replace(regex, '*'.repeat(badWord.length));
@@ -36,5 +34,5 @@ const formatText = async text => {
 
 
 module.exports = {
-  formatText,
+  clean,
 };

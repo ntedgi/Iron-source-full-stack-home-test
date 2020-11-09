@@ -1,4 +1,4 @@
-const dbHandler = require('../../services/db/PostgresHandler');
+const dbHandler = require('../../services/db');
 
 const chatRoomTable = 'rooms';
 
