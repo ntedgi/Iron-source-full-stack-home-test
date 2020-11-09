@@ -16,6 +16,8 @@
 
 - Just Want to Play ?
     - At the root project directory, Run: `docker-compose up`
+    - Wait until you see :
+    - `| info: Chat Server | started , server listening on port: 3005`
     - Navigate to http://localhost:8080
 - Development
     - Run : `cd client && npm install && npm start`
