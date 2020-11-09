@@ -27,7 +27,6 @@ import {LoginService} from './services/loginService';
 import {FormBuilder} from '@angular/forms';
 import {SigninComponent} from './components/login/componenets/signin/signin.component';
 import {SignupComponent} from './components/login/componenets/signup/signup.component';
-import {WrappedSocket} from 'ngx-socket-io/src/socket-io.service';
 
 @NgModule({
   declarations: [
@@ -43,15 +42,15 @@ import {WrappedSocket} from 'ngx-socket-io/src/socket-io.service';
     SignupComponent
   ],
   imports: [
-    BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    BrowserModule,
     AppRoutingModule,
     PrimeNgModuleLoaders,
     ReactiveFormsModule,
     SocketIoModule.forRoot(config)
   ],
-  providers: [ChatRoomsService, FormBuilder, LoginService, WrappedSocket],
+  providers: [ChatRoomsService, FormBuilder, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
