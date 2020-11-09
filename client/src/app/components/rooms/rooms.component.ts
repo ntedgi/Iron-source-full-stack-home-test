@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ChatRoom} from '../../interfaces';
-import {ChatRoomsService} from '../../services/chatRoomsService';
+import {ChatRoomsService} from '../../services/chat-rooms-service';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {CHAT_URL} from '../../consts';
 import {HttpClient} from '@angular/common/http';
+import {LoginService} from '../../services/login-service';
 
 @Component({
   selector: 'app-rooms',
@@ -16,16 +17,15 @@ export class RoomsComponent implements OnInit {
 
   rooms: ChatRoom[];
   selectChatRoom: ChatRoom;
-
   newRoom: FormGroup;
 
-  constructor(private chatRoomsService: ChatRoomsService, private fb: FormBuilder, private router: Router) {
+  constructor(private chatRoomsService: ChatRoomsService, private fb: FormBuilder, private router: Router, private auth: LoginService) {
     this.newRoom = this.fb.group({
       roomName: new FormControl('', [Validators.required, Validators.minLength(4)])
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.chatRoomsService.getAllAvailableChatRooms().then(availableRooms => {
         const {data} = availableRooms;
         this.rooms = data.rooms.map(e => e as ChatRoom);
@@ -43,7 +43,7 @@ export class RoomsComponent implements OnInit {
   }
 
   createRoom(): void {
-    const nickName = localStorage.getItem('nick_name');
+    const nickName = sessionStorage.getItem('nick-name');
     this.chatRoomsService.createChatRooms(this.newRoom.controls.roomName.value, nickName).then(
       e => {
         this.updateChart();

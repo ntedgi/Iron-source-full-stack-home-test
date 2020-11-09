@@ -22,6 +22,7 @@ import {User} from '../../../../interfaces';
 export class ChatInputComponent {
   @ViewChild('text', {static: true}) nameField: ElementRef;
   @Input() user: User;
+  // tslint:disable-next-line:no-output-on-prefix
   @Output() onMessage = new EventEmitter<string>();
 
   public textMessageInput: FormGroup;

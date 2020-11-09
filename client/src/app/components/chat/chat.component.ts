@@ -16,7 +16,7 @@ import {
 } from './consts.js';
 
 import {CHAT_ROOMS_URL} from '../../consts';
-import {WrappedSocket} from 'ngx-socket-io/src/socket-io.service';
+import {LoginService} from '../../services/login-service';
 
 @Component({
   selector: 'app-chat',
@@ -30,7 +30,17 @@ export class ChatComponent {
   roomName: string;
   userNickName: string;
 
+  // tslint:disable-next-line:no-output-on-prefix
   @Output() onMessage = new EventEmitter<string>();
+
+  constructor(private socket: Socket, private cdr: ChangeDetectorRef, private route: ActivatedRoute, private router: Router,
+              private auth: LoginService
+  ) {
+    this.roomName = this.route.snapshot.queryParamMap.get('id');
+    this.userNickName = sessionStorage.getItem('nick-name');
+    this.initSocketListener(this.roomName);
+    this.socket.emit(JOIN_ROOM, {roomName: this.roomName, nickName: this.userNickName});
+  }
 
   public handleMessage(message: string): void {
     this.socket.emit(MESSAGE, {room: this.roomName, message, user: this.userNickName});
@@ -40,15 +50,6 @@ export class ChatComponent {
     this.socket.emit(LEAVE_ROOM, {roomName: this.roomName});
     this.router.navigateByUrl(CHAT_ROOMS_URL);
   }
-
-  constructor(private socket: Socket, private cdr: ChangeDetectorRef, private route: ActivatedRoute, private router: Router
-  ) {
-    this.roomName = this.route.snapshot.queryParamMap.get('id');
-    this.initSocketListener(this.roomName);
-    this.userNickName = localStorage.getItem('nick_name');
-    this.socket.emit(JOIN_ROOM, {roomName: this.roomName, nickName: this.userNickName});
-  }
-
 
   private initSocketListener(roomName): void {
     this.socket.on(CONNECT, () => {

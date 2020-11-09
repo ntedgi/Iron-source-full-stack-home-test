@@ -22,8 +22,8 @@ import {MessageComponent} from './components/chat/components/message/message.com
 import {ChatInputComponent} from './components/chat/components/chat-input/chat-input.component';
 import {UsersListComponent} from './components/chat/components/users-list/users-list.component';
 // providers
-import {ChatRoomsService} from './services/chatRoomsService';
-import {LoginService} from './services/loginService';
+import {ChatRoomsService} from './services/chat-rooms-service';
+import {LoginService} from './services/login-service';
 import {FormBuilder} from '@angular/forms';
 import {SigninComponent} from './components/login/componenets/signin/signin.component';
 import {SignupComponent} from './components/login/componenets/signup/signup.component';

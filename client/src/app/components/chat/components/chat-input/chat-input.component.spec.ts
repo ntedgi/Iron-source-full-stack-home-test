@@ -10,7 +10,7 @@ describe('ChatInputComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ChatInputComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

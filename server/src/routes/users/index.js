@@ -9,7 +9,7 @@ const {
   INTERNAL_SERVER_ERROR,
 } = require('../consts');
 
-router.post('/signin', async(req, res) => {
+router.post('/sign-in', async(req, res) => {
   const {email} = req.body;
   users
     .getUserByEmail(email)

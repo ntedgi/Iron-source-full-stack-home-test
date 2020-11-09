@@ -21,10 +21,11 @@ export class ChatWindowComponent implements OnInit, AfterViewChecked {
   @ViewChild('scroll', {static: true}) scroll: ElementRef;
   @Input() messages: Message[];
   @Input() selectedUser: User;
+  // tslint:disable-next-line:no-output-on-prefix
   @Output() onMessage = new EventEmitter<string>();
 
   ngAfterViewChecked(): void {
-    this.scroll.nativeElement.scrollTop = this.scroll.nativeElement.scrollHeight
+    this.scroll.nativeElement.scrollTop = this.scroll.nativeElement.scrollHeight;
   }
 
   public handleMessage(message: string): void {
@@ -34,7 +35,7 @@ export class ChatWindowComponent implements OnInit, AfterViewChecked {
 
 
   ngOnInit(): void {
-    this.scroll.nativeElement.scrollTop = this.scroll.nativeElement.scrollHeight
+    this.scroll.nativeElement.scrollTop = this.scroll.nativeElement.scrollHeight;
   }
 
 }

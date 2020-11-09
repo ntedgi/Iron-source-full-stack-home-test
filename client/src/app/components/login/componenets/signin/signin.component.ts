@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
-import {LoginService} from '../../../../services/loginService';
+import {LoginService} from '../../../../services/login-service';
 import {User} from '../../../../interfaces';
 import {PrimeNGConfig, MessageService} from 'primeng/api';
 import {CHAT_ROOMS_URL} from '../../../../consts';
@@ -35,7 +35,7 @@ export class SigninComponent implements OnInit {
 
   onSuccessSignIn(nickName): void {
     this.messageService.add({key: 'tl', severity: 'info', summary: 'Info', detail: `Hi ${nickName} ! Let\'s Go to the chat rooms.`});
-    localStorage.setItem('nick_name', nickName);
+    this.auth.updateUserData(nickName);
     setTimeout(
       this.navigateToChatRooms.bind(this)
       , 1800);

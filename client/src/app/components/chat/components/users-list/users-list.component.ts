@@ -12,7 +12,7 @@ import {User} from '../../../../interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UsersListComponent {
-  @Input() usersList: User[] =[];
+  @Input() usersList: User[] = [];
 
   constructor() {
   }
