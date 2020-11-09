@@ -21,6 +21,7 @@
     - Run : `cd client && npm install && npm start`
     - Run : `cd server`
     - Run : `nvm use` ( I use Node v10.19.0 )
+    - Change : `.env.development` set `DATA_BASE_HOST=localhost`
     - Run : `docker-compose up` to start only Postgres 
     - Run : `npm install && npm start`
     - Navigate to http://localhost:4200
