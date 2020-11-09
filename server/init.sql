@@ -13,7 +13,7 @@ create table if not exists room_history
 (
 	room_name text,
 	message text,
-	sender_email text,
+	sender text,
 	timestamp timestamp default CURRENT_TIMESTAMP
 );
 

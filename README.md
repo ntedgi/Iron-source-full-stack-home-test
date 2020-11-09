@@ -80,7 +80,7 @@ Available Scripts:
 
 ### Room History
 
-| Column | Room Name             | Message | Sender Email       |Timestamp|
+| Column | Room Name             | Message | Sender        |Timestamp|
 | :----: | --------------------- | ----------- | ---------- |---------- |
 |  Type  | Text  | Text        |   Foreign Key (Users)|Timestamp ( default CURRENT_TIMESTAMP)
 
